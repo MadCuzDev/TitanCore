@@ -1,0 +1,115 @@
+package me.madcuzdev.titancore;
+
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+
+import java.io.File;
+import java.io.IOException;
+
+public class ConfigHandler {
+
+    private static File prestigesFile = new File("plugins/TitanCore/prestiges.yml");
+    private static FileConfiguration prestigesConfig;
+
+    public static FileConfiguration getPrestigesConfig() {
+        return prestigesConfig;
+    }
+
+    static void setupPrestigesConfig() {
+        prestigesConfig = YamlConfiguration.loadConfiguration(prestigesFile);
+        getPrestigesConfig().options().copyDefaults(true);
+        savePrestigesConfig();
+    }
+
+    private static void savePrestigesConfig() {
+        try {
+            prestigesConfig.save(prestigesFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void loadPrestigesConfig() {
+        try {
+            prestigesConfig.load(prestigesFile);
+        } catch (InvalidConfigurationException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void reloadPrestigesConfig() {
+        savePrestigesConfig();
+        loadPrestigesConfig();
+    }
+
+    
+    private static File tokenFile = new File("plugins/TitanCore/token.yml");
+    private static FileConfiguration tokenConfig;
+
+    public static FileConfiguration getTokenConfig() {
+        return tokenConfig;
+    }
+
+    static void setupTokenConfig() {
+        tokenConfig = YamlConfiguration.loadConfiguration(tokenFile);
+        getTokenConfig().options().copyDefaults(true);
+        saveTokenConfig();
+    }
+
+    private static void saveTokenConfig() {
+        try {
+            tokenConfig.save(tokenFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void loadTokenConfig() {
+        try {
+            tokenConfig.load(tokenFile);
+        } catch (InvalidConfigurationException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void reloadtokenConfig() {
+        saveTokenConfig();
+        loadTokenConfig();
+    }
+
+    private static File cooldownFile = new File("plugins/TitanCore/cooldown.yml");
+    private static FileConfiguration cooldownConfig;
+
+    public static FileConfiguration getCooldownConfig() {
+        return cooldownConfig;
+    }
+
+    static void setupCooldownConfig() {
+        cooldownConfig = YamlConfiguration.loadConfiguration(cooldownFile);
+        getCooldownConfig().options().copyDefaults(true);
+        saveCooldownConfig();
+    }
+
+    private static void saveCooldownConfig() {
+        try {
+            cooldownConfig.save(cooldownFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void loadCooldownConfig() {
+        try {
+            cooldownConfig.load(cooldownFile);
+        } catch (InvalidConfigurationException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void reloadCooldownConfig() {
+        saveCooldownConfig();
+        loadCooldownConfig();
+    }
+
+}
