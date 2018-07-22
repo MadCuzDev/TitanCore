@@ -22,7 +22,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class CustomizeCommand implements CommandExecutor, Listener {
 	
-	public static HashMap<String, ArrayList<CustomizationOption>> customizationOptions;
+	private static HashMap<String, ArrayList<CustomizationOption>> customizationOptions;
 	
 	@Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -35,7 +35,7 @@ public class CustomizeCommand implements CommandExecutor, Listener {
 		if(event.getInventory() != null && event.getInventory().getName().contains("Customization GUI")){
 			event.setCancelled(true);
 			if(event.getInventory().getName().split(" ")[0].equals("Main")){
-				HashMap<Integer, String> positions = new HashMap<Integer, String>();
+				HashMap<Integer, String> positions = new HashMap<>();
 				positions.put(4, "Border");
 				positions.put(10, "Primary");
 				positions.put(12, "Secondary");
@@ -84,7 +84,7 @@ public class CustomizeCommand implements CommandExecutor, Listener {
 			CustomizationOption option = options.get(i);
 			ItemStack is = new ItemStack(Material.WOOL);
 			ItemMeta im = is.getItemMeta();
-			ArrayList<String> lore = new ArrayList<String>();
+			ArrayList<String> lore = new ArrayList<>();
 			if(ConfigHandler.getPrestigesConfig().getInt(player.getUniqueId().toString())<option.prestigeRequirement)
 				lore.add(ChatColor.RED+""+ChatColor.BOLD+"Prestige " + option.prestigeRequirement + " required.");
 			if(option.donatorRequirement != null && !player.hasPermission("titancore.customization." + option.donatorRequirement))
@@ -102,10 +102,10 @@ public class CustomizeCommand implements CommandExecutor, Listener {
 	}
 	
 	public static void setupCustomizationOptions(){
-		customizationOptions = new HashMap<String, ArrayList<CustomizationOption>>();
+		customizationOptions = new HashMap<>();
 		String[] types = new String[]{"Border", "Design", "Primary", "Secondary", "Tertiary", "Quaternary"};
 		for(String type : types){
-			customizationOptions.put(type, new ArrayList<CustomizationOption>());
+			customizationOptions.put(type, new ArrayList<>());
 		}
 		addCustomizationOption("Border", new CustomizationOption(PrestigeListener.DEFAULT_BORDER, 0));
 		addCustomizationOption("Design", new CustomizationOption(PrestigeListener.DEFAULT_DESIGN, 0));
@@ -132,17 +132,18 @@ public class CustomizeCommand implements CommandExecutor, Listener {
 
 class CustomizationOption {
 	
-	public String data;
-	public int prestigeRequirement;
-	public String donatorRequirement;
+	String data;
+	int prestigeRequirement;
+	String donatorRequirement;
 	
-	public CustomizationOption(String data, int prestigeRequirement, String donatorRequirement){
+	CustomizationOption(String data, int prestigeRequirement, String donatorRequirement){
 		this.data = data;
 		this.prestigeRequirement = prestigeRequirement;
 		this.donatorRequirement = donatorRequirement;
 	}
 	
-	public CustomizationOption(String data, int prestigeRequirement){
+
+	CustomizationOption(String data, int prestigeRequirement){
 		this.data = data;
 		this.prestigeRequirement = prestigeRequirement;
 		this.donatorRequirement = null;

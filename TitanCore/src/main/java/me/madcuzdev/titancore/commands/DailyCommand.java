@@ -65,10 +65,11 @@ public class DailyCommand implements CommandExecutor {
                     .filter(Node::isGroupNode)
                     .map(Node::getGroupName)
                     .collect(Collectors.toSet());
-            String groupName = "donor";
+            String groupName = "";
             for (String forGroupName : groups) {
-                if (tokens.containsKey(forGroupName)) {
-                    if (renames.get(forGroupName) > renames.get(groupName)) {
+                if (renames.containsKey(forGroupName)) {
+                    int forValue = renames.get(forGroupName);
+                    if (groupName.equalsIgnoreCase("") || forValue > renames.get(groupName)) {
                         groupName = forGroupName.toLowerCase();
                     }
                 }
@@ -77,7 +78,6 @@ public class DailyCommand implements CommandExecutor {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lError: You need a donor rank to execute this command"));
                 return true;
             }
-            System.out.print(groupName);
             if (args.length > 0) {
                 long currentTime = TimeUnit.MILLISECONDS.toHours(System.currentTimeMillis());
                 switch (args[0]) {

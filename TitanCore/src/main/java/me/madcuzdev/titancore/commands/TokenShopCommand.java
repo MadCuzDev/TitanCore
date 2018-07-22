@@ -15,7 +15,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
@@ -23,7 +22,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -36,7 +34,7 @@ public class TokenShopCommand implements Listener, CommandExecutor {
         prices = new HashMap<>();
         prices.put("NoDrop", 5000);
         prices.put("Fortune", 2000);
-        prices.put("Cubic", 8000);
+        prices.put("Cubic", 6000);
         prices.put("Efficiency", 800);
         prices.put("Silk Touch", 5000);
         prices.put("Cutter", 10000000);
