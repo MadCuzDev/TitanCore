@@ -21,6 +21,7 @@ public final class TitanCore extends JavaPlugin {
         ConfigHandler.setupPrestigesConfig();
         ConfigHandler.setupTokenConfig();
         ConfigHandler.setupCooldownConfig();
+        ConfigHandler.setupCustomizationConfig();
         getLogger().info("Configs loaded");
 
         EnchantHandler.setupEnchants();
@@ -30,6 +31,7 @@ public final class TitanCore extends JavaPlugin {
         NoDropListener noDropListener = new NoDropListener();
         TokenShopCommand tokenShopCommand = new TokenShopCommand();
         PwarpCommand pwarpCommand = new PwarpCommand();
+        CustomizeCommand customizeCommand = new CustomizeCommand();
 
         // Listener classes
         NoHungerListener noHungerListener = new NoHungerListener();
@@ -50,7 +52,10 @@ public final class TitanCore extends JavaPlugin {
         PrestigeSetCommand prestigeSetCommand = new PrestigeSetCommand();
         DailyCommand dailyCommand = new DailyCommand();
 
-        registerEvents(noHungerListener, prestigeListener, noDropListener, cubicListener, fortuneListener, tokenListener, tokenShopCommand, cutterListener, pwarpCommand);
+        //Load presets
+        CustomizeCommand.setupCustomizationOptions();
+        
+        registerEvents(noHungerListener, prestigeListener, noDropListener, cubicListener, fortuneListener, tokenListener, tokenShopCommand, cutterListener, pwarpCommand, customizeCommand);
 
         getCommand("rankup").setExecutor(rankupCommand);
         getCommand("nohunger").setExecutor(noHungerCommand);
@@ -64,6 +69,7 @@ public final class TitanCore extends JavaPlugin {
         getCommand("pwarp").setExecutor(pwarpCommand);
         getCommand("prestigeset").setExecutor(prestigeSetCommand);
         getCommand("daily").setExecutor(dailyCommand);
+        getCommand("customize").setExecutor(customizeCommand);
 
         getLogger().info("TitanCore has been successfully enabled");
     }

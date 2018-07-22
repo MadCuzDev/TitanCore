@@ -111,5 +111,39 @@ public class ConfigHandler {
         saveCooldownConfig();
         loadCooldownConfig();
     }
+    
+    private static File customizationFile = new File("plugins/TitanCore/customization.yml");
+    private static FileConfiguration customizationConfig;
+
+    public static FileConfiguration getCustomizationConfig() {
+        return customizationConfig;
+    }
+
+    static void setupCustomizationConfig() {
+        customizationConfig = YamlConfiguration.loadConfiguration(customizationFile);
+        getCustomizationConfig().options().copyDefaults(true);
+        saveCustomizationConfig();
+    }
+
+    private static void saveCustomizationConfig() {
+        try {
+            customizationConfig.save(customizationFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void loadCustomizationConfig() {
+        try {
+            customizationConfig.load(customizationFile);
+        } catch (InvalidConfigurationException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void reloadCustomizationConfig() {
+        saveCustomizationConfig();
+        loadCustomizationConfig();
+    }
 
 }

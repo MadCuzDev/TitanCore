@@ -46,3 +46,7 @@ commands:
   daily:
     usage: /daily (reward)
     description: Receive your daily reward!
+  customize:
+    usage: /customize
+    description: Customize the prestige design
+    aliases: [cz]
