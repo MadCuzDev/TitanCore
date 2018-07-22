@@ -3,6 +3,7 @@ package me.madcuzdev.titancore.listeners;
 import me.madcuzdev.titancore.ConfigHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,6 +22,9 @@ public class TokenListener implements Listener {
     private HashMap<Player, Double> tokenGain = new HashMap<>();
     private Timer timer = new Timer();
 
+    private FileConfiguration tokenConfig = ConfigHandler.getTokenConfig();
+    private FileConfiguration prestigeConfig = ConfigHandler.getPrestigesConfig();
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
@@ -37,18 +41,18 @@ public class TokenListener implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
-        double tokens = (ConfigHandler.getPrestigesConfig().getDouble(uuid.toString()) / 5) + 1;
+        double tokens = (prestigeConfig.getDouble(uuid.toString()) / 5) + 1;
         if (!tokenGain.containsKey(player)) {
             tokenGain.put(player, tokens);
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    ConfigHandler.getTokenConfig().set(uuid.toString(), ConfigHandler.getTokenConfig().getDouble(uuid.toString()) + tokenGain.get(player));
+                    tokenConfig.set(uuid.toString(), tokenConfig.getDouble(uuid.toString()) + tokenGain.get(player));
                     ConfigHandler.reloadtokenConfig();
                     tokenGain.remove(player);
                     if (player.getItemInHand().getType() == Material.DIAMOND_PICKAXE) player.getItemInHand().setDurability((short) 0);
                 }
-            }, 1000);
+            }, 2000);
         } else {
             tokenGain.put(player, tokenGain.get(player) + tokens);
         }

@@ -4,6 +4,7 @@ me\madcuzdev\titancore\EnchantHandler.class
 me\madcuzdev\titancore\listeners\CutterListener.class
 me\madcuzdev\titancore\listeners\CubicListener.class
 me\madcuzdev\titancore\listeners\PrestigeListener.class
+me\madcuzdev\titancore\commands\CustomizationOption.class
 me\madcuzdev\titancore\commands\MaxRankupCommand.class
 me\madcuzdev\titancore\commands\NoHungerCommand.class
 me\madcuzdev\titancore\commands\CostCommand.class
@@ -23,6 +24,7 @@ me\madcuzdev\titancore\commands\PrestigeCommand.class
 me\madcuzdev\titancore\commands\RankupCommand.class
 me\madcuzdev\titancore\listeners\NoDropListener$1.class
 me\madcuzdev\titancore\commands\PrestigeSetCommand.class
+me\madcuzdev\titancore\commands\CustomizeCommand.class
 me\madcuzdev\titancore\listeners\NoDropListener.class
 me\madcuzdev\titancore\enchants\NoDrop.class
 me\madcuzdev\titancore\commands\TitanCoreCommand.class

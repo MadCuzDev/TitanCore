@@ -6,9 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="1a0218bb-6ece-4967-a4f7-5c6c49a8eb93" name="Default" comment="slight changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/CustomizeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/CustomizeCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/DailyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/DailyCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/TokenShopCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/TokenShopCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/TokenListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/TokenListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TitanCore-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/TitanCore-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/ConfigHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/ConfigHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/TitanCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/TitanCore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/commands/CustomizationOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/commands/CustomizationOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/commands/CustomizeCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/commands/CustomizeCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/commands/DailyCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/commands/DailyCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/commands/PrestigeCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/commands/PrestigeCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/commands/TokenShopCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/commands/TokenShopCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/listeners/PrestigeListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/listeners/PrestigeListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/listeners/TokenListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/listeners/TokenListener$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/listeners/TokenListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/me/madcuzdev/titancore/listeners/TokenListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/original-TitanCore-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-TitanCore-1.0.jar" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,8 +37,8 @@
       <file leaf-file-name="TitanCore.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/TitanCore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="71" column="62" selection-start-line="71" selection-start-column="62" selection-end-line="71" selection-end-column="62" />
+            <state relative-caret-position="536">
+              <caret line="51" column="73" selection-start-line="51" selection-start-column="73" selection-end-line="51" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/CustomizeCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="298">
-              <caret line="69" column="43" lean-forward="true" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
+              <caret line="69" column="43" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -65,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DailyCommand.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DailyCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/DailyCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="65" column="44" lean-forward="true" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
+            <state relative-caret-position="578">
+              <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,11 +89,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CostCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/CostCommand.java">
+      <file leaf-file-name="ConfigHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/ConfigHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1343">
+              <caret line="109" column="47" selection-start-line="109" selection-start-column="47" selection-end-line="109" selection-end-column="47" />
+              <folding>
+                <element signature="e#2399#2400#0" expanded="true" />
+                <element signature="e#2436#2437#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TokenListener.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/TokenListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+              <caret line="30" column="41" lean-forward="true" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
+              <folding>
+                <element signature="e#1530#2033#0" expanded="true" />
+                <element signature="e#2032#2033#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FortuneListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/FortuneListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -150,8 +188,6 @@
         <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/enchants/Cutter.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/CutterListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/CubicListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/FortuneListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/TokenListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/PrestigeCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/RankupCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/CostCommand.java" />
@@ -166,6 +202,8 @@
         <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/CustomizeCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/TokenShopCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/DailyCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/TokenListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/FortuneListener.java" />
       </list>
     </option>
   </component>
@@ -251,16 +289,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="titancore" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-              <item name="CustomizeCommand.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="TitanCore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TitanCore" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="titancore" type="462c0819:PsiDirectoryNode" />
               <item name="enchants" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -294,7 +322,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Dev/Desktop/IdeaProjects/TitanCore/src/main/java/me/madcuzdev/titancore/VaultHandler.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/IdeaProjects/TitanCore" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -599,12 +627,20 @@
       <workItem from="1532230951453" duration="173000" />
       <workItem from="1532231161750" duration="194000" />
       <workItem from="1532231379206" duration="1240000" />
-      <workItem from="1532279365915" duration="4950000" />
+      <workItem from="1532279365915" duration="6996000" />
     </task>
+    <task id="LOCAL-00001" summary="slight changes">
+      <created>1532287321569</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1532287321569</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="203235000" />
+    <option name="totallyTimeSpent" value="205281000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -612,7 +648,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.32943678" />
+      <window_info anchor="bottom" id="Messages" weight="0.32943678" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -624,7 +660,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19895834" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19895834" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -830,24 +866,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/TokenListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/enchants/Cutter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/FortuneListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -876,17 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="899">
           <caret line="93" column="49" lean-forward="true" selection-start-line="93" selection-start-column="49" selection-end-line="93" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/ConfigHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="90" column="29" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="29" />
-          <folding>
-            <element signature="e#2399#2400#0" expanded="true" />
-            <element signature="e#2436#2437#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -928,13 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/CostCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/NoHungerListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -959,27 +963,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/CubicListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="28" column="48" lean-forward="true" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/TitanCore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="71" column="62" selection-start-line="71" selection-start-column="62" selection-end-line="71" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/CustomizeCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
-          <caret line="69" column="43" lean-forward="true" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
+          <caret line="69" column="43" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -996,10 +983,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/DailyCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="65" column="44" lean-forward="true" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
+        <state relative-caret-position="578">
+          <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/TitanCore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="51" column="73" selection-start-line="51" selection-start-column="73" selection-end-line="51" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/CubicListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="35" column="70" selection-start-line="35" selection-start-column="70" selection-end-line="35" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/commands/CostCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/ConfigHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="109" column="47" selection-start-line="109" selection-start-column="47" selection-end-line="109" selection-end-column="47" />
+          <folding>
+            <element signature="e#2399#2400#0" expanded="true" />
+            <element signature="e#2436#2437#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/FortuneListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/madcuzdev/titancore/listeners/TokenListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="30" column="41" lean-forward="true" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
+          <folding>
+            <element signature="e#1530#2033#0" expanded="true" />
+            <element signature="e#2032#2033#0" expanded="true" />
           </folding>
         </state>
       </provider>
