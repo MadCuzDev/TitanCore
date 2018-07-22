@@ -46,7 +46,7 @@ public class CustomizeCommand implements CommandExecutor, Listener {
 					openSpecializedCustomizationGUI((Player)event.getWhoClicked(), positions.get(event.getRawSlot()));
 			}else{
 				if(event.getCurrentItem() != null && event.getCurrentItem().getItemMeta() != null && event.getCurrentItem().getItemMeta().getLore() != null){
-					if(false&&event.getCurrentItem().getItemMeta().getLore().get(0).contains("required.")){
+					if(event.getCurrentItem().getItemMeta().getLore().get(0).contains("required.")){
 						event.getWhoClicked().sendMessage(ChatColor.RED + "You can't use this customization option!");
 					}else{
 						String type = event.getInventory().getName().split(" ")[0];
