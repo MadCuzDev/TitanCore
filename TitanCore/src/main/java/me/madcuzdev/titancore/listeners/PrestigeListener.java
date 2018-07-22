@@ -13,16 +13,15 @@ public class PrestigeListener implements Listener {
 	
 	public static final String DEFAULT_DESIGN = "%pri%%prestige%";
 	public static final String DEFAULT_BORDER = "%sec%[%design%%sec%]";
-	public static final String DEFAULT_PRIMARY = "d";
+	public static final String DEFAULT_PRIMARY = "c";
 	public static final String DEFAULT_SECONDARY = "8";
-	public static final String DEFAULT_TERTIARY = "d";
-	public static final String DEFAULT_QUATERNARY = "d";
+	public static final String DEFAULT_TERTIARY = "c";
+	public static final String DEFAULT_QUATERNARY = "c";
 	
     @EventHandler
     public void addPrestigeToChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        System.out.println(getFullDisplay(player));
-        event.setFormat(event.getFormat().replace("{PRESTIGE}", getFullDisplay(player)).replace('&', '\u00A7'));
+        event.setFormat(event.getFormat().replace("{PRESTIGE}", getFullDisplay(player)+"&r").replace('&', '\u00A7'));
     }
     
     public static String getCustomizationOption(String option, Player player){

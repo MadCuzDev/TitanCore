@@ -46,7 +46,7 @@ public class CustomizeCommand implements CommandExecutor, Listener {
 					openSpecializedCustomizationGUI((Player)event.getWhoClicked(), positions.get(event.getRawSlot()));
 			}else{
 				if(event.getCurrentItem() != null && event.getCurrentItem().getItemMeta() != null && event.getCurrentItem().getItemMeta().getLore() != null){
-					if(event.getCurrentItem().getItemMeta().getLore().get(0).contains("required.")){
+					if(false&&event.getCurrentItem().getItemMeta().getLore().get(0).contains("required.")){
 						event.getWhoClicked().sendMessage(ChatColor.RED + "You can't use this customization option!");
 					}else{
 						String type = event.getInventory().getName().split(" ")[0];
@@ -101,6 +101,13 @@ public class CustomizeCommand implements CommandExecutor, Listener {
 		
 	}
 	
+	public static void addCustomizationColors(String color, int primaryLevel){
+		String[] types = new String[]{"Primary", "Secondary", "Tertiary", "Quaternary"};
+		for(int i = 0; i < types.length; i++){
+			addCustomizationOption(types[i], new CustomizationOption(color, primaryLevel*(i+1)));
+		}
+	}
+		
 	public static void setupCustomizationOptions(){
 		customizationOptions = new HashMap<>();
 		String[] types = new String[]{"Border", "Design", "Primary", "Secondary", "Tertiary", "Quaternary"};
@@ -114,14 +121,65 @@ public class CustomizeCommand implements CommandExecutor, Listener {
 		addCustomizationOption("Tertiary", new CustomizationOption(PrestigeListener.DEFAULT_TERTIARY, 0));
 		addCustomizationOption("Quaternary", new CustomizationOption(PrestigeListener.DEFAULT_QUATERNARY, 0));
 		
-		addCustomizationOption("Border", new CustomizationOption("%sec%&l[%design%%sec%&l]", 1));
-		addCustomizationOption("Design", new CustomizationOption("%pri%&l%prestige%&l%pri%", 2));
-		addCustomizationOption("Primary", new CustomizationOption("7", 3));
-		addCustomizationOption("Secondary", new CustomizationOption("4", 4));
-		addCustomizationOption("Tertiary", new CustomizationOption("3", 5));
-		addCustomizationOption("Quaternary", new CustomizationOption("2", 6));
+		//Colors
 		
-		addCustomizationOption("Border", new CustomizationOption("%qua%&ki%sec%&l[%ter%&ki%design%%ter%&ki%sec%&l]%qua%&ki", 20, "Donor"));
+		addCustomizationColors("8", 1);
+		addCustomizationColors("7", 2);
+		addCustomizationColors("4", 3);
+		addCustomizationColors("1", 4);
+		addCustomizationColors("2", 5);
+		addCustomizationColors("5", 6);
+		addCustomizationColors("9", 7);
+		addCustomizationColors("a", 8);
+		addCustomizationColors("b", 9);
+		addCustomizationColors("d", 10);
+		addCustomizationColors("9", 15);
+		addCustomizationColors("e", 25);
+		addCustomizationColors("6", 35);
+		addCustomizationColors("f", 50);
+		addCustomizationColors("0", 75);
+		
+		//Borders
+		
+		addCustomizationOption("Border", new CustomizationOption("%sec%(%design%%sec%)",1));
+		addCustomizationOption("Border", new CustomizationOption("%sec%<%design%%sec%>",2));
+		addCustomizationOption("Border", new CustomizationOption("%sec%{%design%%sec%}",3));
+		
+		addCustomizationOption("Border", new CustomizationOption("%sec%&l[%design%%sec%&l]",20));
+		addCustomizationOption("Border", new CustomizationOption("%sec%&l(%design%%sec%&l)",22));
+		addCustomizationOption("Border", new CustomizationOption("%sec%&l<%design%%sec%&l>",24));
+		addCustomizationOption("Border", new CustomizationOption("%sec%&l{%design%%sec%&l}",26));
+		
+		addCustomizationOption("Border", new CustomizationOption("%ter%&ki%sec%&l[%design%%sec%&l]%ter%&ki",50));
+		addCustomizationOption("Border", new CustomizationOption("%ter%&ki%sec%&l(%design%%sec%&l)%ter%&ki",53));
+		addCustomizationOption("Border", new CustomizationOption("%ter%&ki%sec%&l<%design%%sec%&l>%ter%&ki",56));
+		addCustomizationOption("Border", new CustomizationOption("%ter%&ki%sec%&l{%design%%sec%&l}%ter%&ki",59));
+		
+		addCustomizationOption("Border", new CustomizationOption("%ter%&ki%sec%&l--[%design%%sec%&l]--%ter%&ki",100));
+		addCustomizationOption("Border", new CustomizationOption("%ter%&ki%sec%&l--(%design%%sec%&l)--%ter%&ki",104));
+		addCustomizationOption("Border", new CustomizationOption("%ter%&ki%sec%&l--<%design%%sec%&l>--%ter%&ki",108));
+		addCustomizationOption("Border", new CustomizationOption("%ter%&ki%sec%&l--{%design%%sec%&l}--%ter%&ki",112));
+		
+		addCustomizationOption("Border", new CustomizationOption("%ter%&ki%sec%&l&m--[%design%%sec%&l&m]--%ter%&ki",200));
+		addCustomizationOption("Border", new CustomizationOption("%ter%&ki%sec%&l&m--(%design%%sec%&l&m)--%ter%&ki",205));
+		addCustomizationOption("Border", new CustomizationOption("%ter%&ki%sec%&l&m--<%design%%sec%&l&m>--%ter%&ki",210));
+		addCustomizationOption("Border", new CustomizationOption("%ter%&ki%sec%&l&m--{%design%%sec%&l&m}--%ter%&ki",215));
+		
+		addCustomizationOption("Border", new CustomizationOption("%ter%&k&li%sec%&l&m--<[%design%%qua%&l&m%sec%&l&m]>--%ter%&k&li", 350));
+		addCustomizationOption("Border", new CustomizationOption("%ter%&k&li%sec%&l&m--[(%design%%qua%&l&m%sec%&l&m)]--%ter%&k&li", 356));
+		addCustomizationOption("Border", new CustomizationOption("%ter%&k&li%sec%&l&m--{<%design%%qua%&l&m%sec%&l&m>}--%ter%&k&li", 362));
+		addCustomizationOption("Border", new CustomizationOption("%ter%&k&li%sec%&l&m--({%design%%qua%&l&m%sec%&l&m})--%ter%&k&li", 368));
+		
+		//Designs
+		
+		addCustomizationOption("Design", new CustomizationOption("%pri%&l%prestige%", 25));
+		addCustomizationOption("Design", new CustomizationOption("%ter%&ki%pri%&l%prestige%%ter%&ki", 75));
+		addCustomizationOption("Design", new CustomizationOption("%qua%&ki%ter%&ki%pri%&l%prestige%%ter%&ki%qua%&ki", 150));
+		addCustomizationOption("Design", new CustomizationOption("%qua%&ki%ter%&k&li%pri%&l%prestige%%ter%&k&li%qua%&ki", 225));
+		addCustomizationOption("Design", new CustomizationOption("%qua%&ki%ter%&k&li%qua%&ki%pri%&l%prestige%%qua%&ki%ter%&k&li%qua%&ki", 325));
+		addCustomizationOption("Design", new CustomizationOption("%qua%&ki%ter%&k&li%qua%&k&li%pri%&l%prestige%%qua%&k&li%ter%&k&li%qua%&ki", 500));
+		addCustomizationOption("Design", new CustomizationOption("%qua%&k&li%ter%&k&li%qua%&k&li%pri%&l%prestige%%qua%&k&li%ter%&k&li%qua%&k&li", 1000));
+		
 	}
 	
 	private static void addCustomizationOption(String type, CustomizationOption option){
