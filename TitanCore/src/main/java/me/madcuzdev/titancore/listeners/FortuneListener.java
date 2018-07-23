@@ -4,6 +4,7 @@ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import me.lucko.luckperms.LuckPerms;
 import me.lucko.luckperms.api.manager.UserManager;
+import me.madcuzdev.titancore.ConfigHandler;
 import me.madcuzdev.titancore.PriceHandler;
 import me.madcuzdev.titancore.VaultHandler;
 import org.bukkit.Bukkit;
@@ -21,6 +22,9 @@ import java.util.*;
 public class FortuneListener implements Listener {
     private PriceHandler priceHandler = new PriceHandler();
     private UserManager userManager = LuckPerms.getApi().getUserManager();
+
+    private HashMap<Player, Double> moneyGain = new HashMap<>();
+    private Timer timer = new Timer();
 
     static WorldGuardPlugin getWorldGuard() {
         Plugin plugin = Bukkit.getPluginManager().getPlugin("WorldGuard");
@@ -41,11 +45,21 @@ public class FortuneListener implements Listener {
         for (ProtectedRegion protectedRegion : Objects.requireNonNull(getWorldGuard()).getRegionManager(block.getWorld()).getApplicableRegions(block.getLocation())) {
             if (protectedRegion.getId().toLowerCase().contains("mine")) {
                 block.setType(Material.AIR);
-                int blocks = 3;
-                if (player.getItemInHand().containsEnchantment(Enchantment.LOOT_BONUS_BLOCKS)) {
-                    blocks = blocks * player.getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS);
+                double blocks = player.getItemInHand().containsEnchantment(Enchantment.LOOT_BONUS_BLOCKS) ? 3 * player.getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) : 3;
+                blocks = blocks * priceHandler.getSellPrices().get(Objects.requireNonNull(userManager.getUser(player.getUniqueId())).getPrimaryGroup());
+                if (!moneyGain.containsKey(player)) {
+                    moneyGain.put(player, blocks);
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            VaultHandler.getEcon().depositPlayer(player, moneyGain.get(player));
+                            moneyGain.remove(player);
+                            if (player.getItemInHand().getType() == Material.DIAMOND_PICKAXE) player.getItemInHand().setDurability((short) 0);
+                        }
+                    }, 2000);
+                } else {
+                    moneyGain.put(player, moneyGain.get(player) + blocks);
                 }
-                VaultHandler.getEcon().depositPlayer(player, blocks * priceHandler.getSellPrices().get(Objects.requireNonNull(userManager.getUser(player.getName())).getPrimaryGroup()));
             }
         }
     }

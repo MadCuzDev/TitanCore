@@ -29,5 +29,6 @@ me\madcuzdev\titancore\listeners\NoDropListener.class
 me\madcuzdev\titancore\enchants\NoDrop.class
 me\madcuzdev\titancore\commands\TitanCoreCommand.class
 me\madcuzdev\titancore\commands\TokenCommand.class
+me\madcuzdev\titancore\listeners\FortuneListener$1.class
 me\madcuzdev\titancore\PriceHandler.class
 me\madcuzdev\titancore\TitanCore.class
