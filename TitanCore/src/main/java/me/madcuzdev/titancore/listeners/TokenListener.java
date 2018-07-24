@@ -47,10 +47,13 @@ public class TokenListener implements Listener {
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    tokenConfig.set(uuid.toString(), tokenConfig.getDouble(uuid.toString()) + tokenGain.get(player));
-                    ConfigHandler.reloadtokenConfig();
+
+                    String uuid = player.getUniqueId().toString();
+                    tokenConfig.set(uuid, tokenConfig.getDouble(uuid) + tokenGain.get(player));
                     tokenGain.remove(player);
-                    if (player.getItemInHand().getType() == Material.DIAMOND_PICKAXE) player.getItemInHand().setDurability((short) 0);
+                    ConfigHandler.reloadtokenConfig();
+                    if (player.getItemInHand().getType() == Material.DIAMOND_PICKAXE)
+                        player.getItemInHand().setDurability((short) 0);
                 }
             }, 2000);
         } else {
