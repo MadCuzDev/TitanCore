@@ -21,6 +21,7 @@ me\madcuzdev\titancore\commands\MaxRankupCommand$1.class
 me\madcuzdev\titancore\listeners\NoHungerListener.class
 me\madcuzdev\titancore\commands\CeCommand.class
 me\madcuzdev\titancore\commands\PrestigeCommand.class
+me\madcuzdev\titancore\ScoreboardHandler$1.class
 me\madcuzdev\titancore\commands\RankupCommand.class
 me\madcuzdev\titancore\listeners\NoDropListener$1.class
 me\madcuzdev\titancore\commands\PrestigeSetCommand.class
@@ -31,4 +32,5 @@ me\madcuzdev\titancore\commands\TitanCoreCommand.class
 me\madcuzdev\titancore\commands\TokenCommand.class
 me\madcuzdev\titancore\listeners\FortuneListener$1.class
 me\madcuzdev\titancore\PriceHandler.class
+me\madcuzdev\titancore\ScoreboardHandler.class
 me\madcuzdev\titancore\TitanCore.class

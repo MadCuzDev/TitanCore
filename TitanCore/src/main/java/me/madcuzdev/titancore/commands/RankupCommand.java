@@ -36,7 +36,7 @@ public class RankupCommand implements CommandExecutor {
         luckPermsApi.getUserManager().saveUser(user);
     }
 
-    String getNextRank(String primaryGroup) {
+    public String getNextRank(String primaryGroup) {
         String nextRank;
         if (primaryGroup.equalsIgnoreCase("default")) {
             nextRank = "b";
