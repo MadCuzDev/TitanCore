@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class TitanCore extends JavaPlugin {
     private VaultHandler vaultHandler = new VaultHandler();
+    private ScoreboardHandler scoreboardHandler;
 
     @Override
     public void onEnable() {
@@ -54,6 +55,9 @@ public final class TitanCore extends JavaPlugin {
 
         //Load presets
         CustomizeCommand.setupCustomizationOptions();
+        scoreboardHandler = new ScoreboardHandler(this);
+        scoreboardHandler.startScoreboardLoop();
+        
         
         registerEvents(noHungerListener, prestigeListener, noDropListener, cubicListener, fortuneListener, tokenListener, tokenShopCommand, cutterListener, pwarpCommand, customizeCommand);
 
