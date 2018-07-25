@@ -60,7 +60,7 @@ public class FortuneListener implements Listener {
                     timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
-                            VaultHandler.getEcon().depositPlayer(player, moneyGain.get(player) * ((player.getItemInHand()!=null&&random.nextInt(500)<player.getItemInHand().getEnchantmentLevel(EnchantHandler.Yes))?2:1));
+                            VaultHandler.getEcon().depositPlayer(player, moneyGain.get(player) * ((player.getItemInHand()!=null&&random.nextInt(500)<player.getItemInHand().getEnchantmentLevel(EnchantHandler.Twin))?2:1));
                             moneyGain.remove(player);
                             if (player.getItemInHand().getType() == Material.DIAMOND_PICKAXE) player.getItemInHand().setDurability((short) 0);
                         }

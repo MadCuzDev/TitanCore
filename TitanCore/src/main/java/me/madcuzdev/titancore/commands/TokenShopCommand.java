@@ -38,6 +38,7 @@ public class TokenShopCommand implements Listener, CommandExecutor {
         prices.put("Efficiency", 800);
         prices.put("Silk Touch", 5000);
         prices.put("Cutter", 10000000);
+        prices.put("Twin", 1000000);
     }
 
     private HashMap<String, Integer> maxes;
@@ -49,6 +50,7 @@ public class TokenShopCommand implements Listener, CommandExecutor {
         maxes.put("Efficiency", 30000);
         maxes.put("Silk Touch", 1);
         maxes.put("Cutter", 6);
+        maxes.put("Twin", 500);
     }
 
     private Inventory gui = Bukkit.createInventory(null, 36, ChatColor.translateAlternateColorCodes('&', "&6&lEnchantments"));
@@ -72,6 +74,7 @@ public class TokenShopCommand implements Listener, CommandExecutor {
         lore.add(ChatColor.translateAlternateColorCodes('&', "&7Left-click for 1x"));
         im.setLore(lore);
         obsidian.setItemMeta(im);
+        obsidian.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
         gui.addItem(obsidian);
 
         for (int i = 0; 7 > i; i++) {
@@ -154,9 +157,26 @@ public class TokenShopCommand implements Listener, CommandExecutor {
         cookie.setItemMeta(im);
         gui.addItem(cookie);
 
-        for (int i = 0; 12 > i; i++) {
+        for (int i = 0; 7 > i; i++) {
             gui.setItem(gui.firstEmpty(), grayGlassPane);
         }
+        
+        ItemStack goldNugget = new ItemStack(Material.GOLD_NUGGET);
+        im = goldNugget.getItemMeta();
+        im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6&lTwin"));
+        lore.clear();
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&7COST: "
+                + PriceHandler.formatNumber((double) prices.get("Twin"))));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&7MAX: "
+                + PriceHandler.formatNumber((double) maxes.get("Twin"))));
+        im.setLore(lore);
+        goldNugget.setItemMeta(im);
+        gui.addItem(goldNugget);
+        
+        for (int i = 0; 4 > i; i++) {
+            gui.setItem(gui.firstEmpty(), grayGlassPane);
+        }
+        
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -196,6 +216,9 @@ public class TokenShopCommand implements Listener, CommandExecutor {
                             case "Silk Touch":
                                 ench = Enchantment.SILK_TOUCH;
                                 break;
+                            case "Twin:":
+                            	ench = EnchantHandler.Twin;
+                            	break;
                             case "Cutter":
                                 ench = EnchantHandler.Cutter;
                                 break;

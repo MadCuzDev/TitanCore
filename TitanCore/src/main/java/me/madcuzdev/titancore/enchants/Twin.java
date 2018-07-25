@@ -4,9 +4,9 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.ItemStack;
 
-public class Yes extends Enchantment {
+public class Twin extends Enchantment {
 
-	public Yes(int id) {
+	public Twin(int id) {
 		super(id);
 		// TODO Auto-generated constructor stub
 	}
