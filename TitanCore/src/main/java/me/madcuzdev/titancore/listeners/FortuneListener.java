@@ -1,12 +1,12 @@
 package me.madcuzdev.titancore.listeners;
 
-import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
-import com.sk89q.worldguard.protection.regions.ProtectedRegion;
-import me.lucko.luckperms.LuckPerms;
-import me.lucko.luckperms.api.manager.UserManager;
-import me.madcuzdev.titancore.ConfigHandler;
-import me.madcuzdev.titancore.PriceHandler;
-import me.madcuzdev.titancore.VaultHandler;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -17,11 +17,19 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.plugin.Plugin;
 
-import java.util.*;
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import com.sk89q.worldguard.protection.regions.ProtectedRegion;
+
+import me.lucko.luckperms.LuckPerms;
+import me.lucko.luckperms.api.manager.UserManager;
+import me.madcuzdev.titancore.EnchantHandler;
+import me.madcuzdev.titancore.PriceHandler;
+import me.madcuzdev.titancore.VaultHandler;
 
 public class FortuneListener implements Listener {
     private PriceHandler priceHandler = new PriceHandler();
     private UserManager userManager = LuckPerms.getApi().getUserManager();
+    private Random random = new Random();
 
     private HashMap<Player, Double> moneyGain = new HashMap<>();
     private Timer timer = new Timer();
@@ -52,7 +60,7 @@ public class FortuneListener implements Listener {
                     timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
-                            VaultHandler.getEcon().depositPlayer(player, moneyGain.get(player));
+                            VaultHandler.getEcon().depositPlayer(player, moneyGain.get(player) * ((player.getItemInHand()!=null&&random.nextInt(500)<player.getItemInHand().getEnchantmentLevel(EnchantHandler.Yes))?2:1));
                             moneyGain.remove(player);
                             if (player.getItemInHand().getType() == Material.DIAMOND_PICKAXE) player.getItemInHand().setDurability((short) 0);
                         }
