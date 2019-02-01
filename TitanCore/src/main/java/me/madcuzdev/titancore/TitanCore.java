@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class TitanCore extends JavaPlugin {
     private VaultHandler vaultHandler = new VaultHandler();
     private ScoreboardHandler scoreboardHandler;
-
+    //Devan the Palm was not here... it was Alco!
     @Override
     public void onEnable() {
         if (!vaultHandler.setupEconomy() ) {
