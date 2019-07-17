@@ -19,9 +19,6 @@ commands:
   prestige:
     usage: /prestige
     description: Prestige to the next prestige rank!
-  dropson:
-    isage: /dropson
-    description: Bypass the NoDrop enchantment.
   ce:
     usage: /ce (command) {arg1} {arg2}
     description: General Custom-Enchant command

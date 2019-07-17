@@ -28,7 +28,6 @@ public final class TitanCore extends JavaPlugin {
         getLogger().info("Enchants loaded");
 
         // CommandExecutor & Listener classes
-        NoDropListener noDropListener = new NoDropListener();
         TokenShopCommand tokenShopCommand = new TokenShopCommand();
         PwarpCommand pwarpCommand = new PwarpCommand();
         CustomizeCommand customizeCommand = new CustomizeCommand();
@@ -40,6 +39,8 @@ public final class TitanCore extends JavaPlugin {
         FortuneListener fortuneListener = new FortuneListener();
         TokenListener tokenListener = new TokenListener();
         CutterListener cutterListener = new CutterListener();
+        QuakeListener quakeListener = new QuakeListener();
+        SphericListener sphericListener = new SphericListener();
 
         // CommandExecutor classes
         NoHungerCommand noHungerCommand = new NoHungerCommand();
@@ -58,13 +59,12 @@ public final class TitanCore extends JavaPlugin {
         scoreboardHandler.startScoreboardLoop();
         
         
-        registerEvents(noHungerListener, prestigeListener, noDropListener, cubicListener, fortuneListener, tokenListener, tokenShopCommand, cutterListener, pwarpCommand, customizeCommand);
+        registerEvents(noHungerListener, prestigeListener, cubicListener, fortuneListener, tokenListener, tokenShopCommand, cutterListener, pwarpCommand, customizeCommand, quakeListener, sphericListener);
 
         getCommand("rankup").setExecutor(rankupCommand);
         getCommand("nohunger").setExecutor(noHungerCommand);
         getCommand("maxrankup").setExecutor(maxRankupCommand);
         getCommand("prestige").setExecutor(prestigeCommand);
-        getCommand("dropson").setExecutor(noDropListener);
         getCommand("ce").setExecutor(ceCommand);
         getCommand("token").setExecutor(tokenCommand);
         getCommand("tokenshop").setExecutor(tokenShopCommand);

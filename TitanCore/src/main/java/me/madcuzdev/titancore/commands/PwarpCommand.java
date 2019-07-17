@@ -73,7 +73,6 @@ public class PwarpCommand implements Listener, CommandExecutor {
     }
 
     private ArrayList<Integer> pwarps;
-
     {
         pwarps = new ArrayList<>();
         pwarps.add(1);

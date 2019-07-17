@@ -10,7 +10,7 @@ import me.madcuzdev.titancore.enchants.*;
 public class EnchantHandler {
 
     static void setupEnchants() {
-        registerEnchants(NoDrop, Cubic, Cutter, Twin);
+        registerEnchants(Cubic, Cutter, MoneyBags, Casino, Quake, Spheric);
     }
 
     private static void registerEnchants(Enchantment... enchantments) {
@@ -33,10 +33,12 @@ public class EnchantHandler {
         }
     }
 
-    public static NoDrop NoDrop = new NoDrop(60);
     public static Cubic Cubic = new Cubic(68);
     public static Cutter Cutter = new Cutter(69);
-    public static Twin Twin = new Twin(70);
+    public static MoneyBags MoneyBags = new MoneyBags(70);
+    public static Casino Casino = new Casino(71);
+    public static Quake Quake = new Quake(72);
+    public static Spheric Spheric = new Spheric(73);
 
     public ArrayList<Enchantment> getEnchants() {
         return enchantments;
@@ -45,9 +47,11 @@ public class EnchantHandler {
     private static ArrayList<Enchantment> enchantments;
     {
         enchantments = new ArrayList<>();
-        enchantments.add(NoDrop);
         enchantments.add(Cubic);
         enchantments.add(Cutter);
-        enchantments.add(Twin);
+        enchantments.add(MoneyBags);
+        enchantments.add(Casino);
+        enchantments.add(Quake);
+        enchantments.add(Spheric);
     }
 }

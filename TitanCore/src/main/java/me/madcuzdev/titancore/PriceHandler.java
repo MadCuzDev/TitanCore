@@ -13,10 +13,7 @@ public class PriceHandler {
         rankPrices = new HashMap<>();
         List<String> alphRanks = Arrays.asList("default", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
         for (int i = 0; alphRanks.size() > i; i++) {
-            long num1 = i+1;
-            long num2 = (long)Math.pow(num1, 6);
-            long num3 = num1*1000;
-            rankPrices.put(alphRanks.get(i), num3 + num2);
+            rankPrices.put(alphRanks.get(i), (long) (995 + 5 * Math.pow(i, 6)));
         }
     }
 

@@ -32,25 +32,29 @@ public class TokenShopCommand implements Listener, CommandExecutor {
     private HashMap<String, Integer> prices;
     {
         prices = new HashMap<>();
-        prices.put("NoDrop", 5000);
         prices.put("Fortune", 2000);
         prices.put("Cubic", 6000);
         prices.put("Efficiency", 800);
         prices.put("Silk Touch", 5000);
         prices.put("Cutter", 10000000);
-        prices.put("Twin", 1000000);
+        prices.put("MoneyBags", 100000);
+        prices.put("Casino", 100000);
+        prices.put("Quake", 20000000);
+        prices.put("Spheric", 10000);
     }
 
     private HashMap<String, Integer> maxes;
     {
         maxes = new HashMap<>();
-        maxes.put("NoDrop", 1);
         maxes.put("Fortune", 30000);
         maxes.put("Cubic", 5000);
         maxes.put("Efficiency", 30000);
         maxes.put("Silk Touch", 1);
         maxes.put("Cutter", 6);
-        maxes.put("Twin", 500);
+        maxes.put("MoneyBags", 500);
+        maxes.put("Casino", 500);
+        maxes.put("Quake", 6);
+        maxes.put("Spheric", 5000);
     }
 
     private Inventory gui = Bukkit.createInventory(null, 36, ChatColor.translateAlternateColorCodes('&', "&6&lEnchantments"));
@@ -81,102 +85,49 @@ public class TokenShopCommand implements Listener, CommandExecutor {
             gui.setItem(gui.firstEmpty(), grayGlassPane);
         }
 
-        ItemStack feather = new ItemStack(Material.FEATHER);
-        im = feather.getItemMeta();
-        im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6&lNoDrop"));
-        lore.clear();
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7COST: "
-                + PriceHandler.formatNumber((double) prices.get("NoDrop"))));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7MAX: "
-                + PriceHandler.formatNumber((double) maxes.get("NoDrop"))));
-        im.setLore(lore);
-        feather.setItemMeta(im);
-        gui.addItem(feather);
+        addShopItem(Material.IRON_INGOT, "Casino");
 
-        ItemStack diamond = new ItemStack(Material.DIAMOND);
-        im = diamond.getItemMeta();
-        im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6&lFortune"));
-        lore.clear();
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7COST: "
-                + PriceHandler.formatNumber((double) prices.get("Fortune"))));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7MAX: "
-                + PriceHandler.formatNumber((double) maxes.get("Fortune"))));
-        im.setLore(lore);
-        diamond.setItemMeta(im);
-        gui.addItem(diamond);
+        addShopItem(Material.DIAMOND, "Fortune");
 
-        ItemStack tnt = new ItemStack(Material.TNT);
-        im = tnt.getItemMeta();
-        im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6&lCubic"));
-        lore.clear();
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7COST: "
-                + PriceHandler.formatNumber((double) prices.get("Cubic"))));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7MAX: "
-                + PriceHandler.formatNumber((double) maxes.get("Cubic"))));
-        im.setLore(lore);
-        tnt.setItemMeta(im);
-        gui.addItem(tnt);
+        addShopItem(Material.TNT, "Cubic");
 
         for (int i = 0; 6 > i; i++) {
             gui.setItem(gui.firstEmpty(), grayGlassPane);
         }
 
-        ItemStack beacon = new ItemStack(Material.BEACON);
-        im = beacon.getItemMeta();
-        im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6&lEfficiency"));
-        lore.clear();
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7COST: "
-                + PriceHandler.formatNumber((double) prices.get("Efficiency"))));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7MAX: "
-                + PriceHandler.formatNumber((double) maxes.get("Efficiency"))));
-        im.setLore(lore);
-        beacon.setItemMeta(im);
-        gui.addItem(beacon);
+        addShopItem(Material.BEACON, "Efficiency");
 
-        ItemStack web = new ItemStack(Material.WEB);
-        im = web.getItemMeta();
-        im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6&lSilk Touch"));
-        lore.clear();
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7COST: "
-                + PriceHandler.formatNumber((double) prices.get("Silk Touch"))));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7MAX: "
-                + PriceHandler.formatNumber((double) maxes.get("Silk Touch"))));
-        im.setLore(lore);
-        web.setItemMeta(im);
-        gui.addItem(web);
+        addShopItem(Material.WEB, "Silk Touch");
 
-        ItemStack cookie = new ItemStack(Material.COOKIE);
-        im = cookie.getItemMeta();
-        im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6&lCutter"));
-        lore.clear();
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7COST: "
-                + PriceHandler.formatNumber((double) prices.get("Cutter"))));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7MAX: "
-                + PriceHandler.formatNumber((double) maxes.get("Cutter"))));
-        im.setLore(lore);
-        cookie.setItemMeta(im);
-        gui.addItem(cookie);
+        addShopItem(Material.COOKIE, "Cutter");
 
-        for (int i = 0; 7 > i; i++) {
+        for (int i = 0; 6 > i; i++) {
             gui.setItem(gui.firstEmpty(), grayGlassPane);
         }
+
+        addShopItem(Material.DEAD_BUSH, "Quake");
         
-        ItemStack goldNugget = new ItemStack(Material.GOLD_NUGGET);
-        im = goldNugget.getItemMeta();
-        im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6&lTwin"));
-        lore.clear();
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7COST: "
-                + PriceHandler.formatNumber((double) prices.get("Twin"))));
-        lore.add(ChatColor.translateAlternateColorCodes('&', "&7MAX: "
-                + PriceHandler.formatNumber((double) maxes.get("Twin"))));
-        im.setLore(lore);
-        goldNugget.setItemMeta(im);
-        gui.addItem(goldNugget);
+        addShopItem(Material.GOLD_NUGGET, "MoneyBags");
+
+        addShopItem(Material.SLIME_BALL, "Spheric");
         
-        for (int i = 0; 4 > i; i++) {
+        for (int i = 0; 3 > i; i++) {
             gui.setItem(gui.firstEmpty(), grayGlassPane);
         }
-        
+    }
+    
+    private void addShopItem(Material material, String enchant) {
+        ItemStack shopItem = new ItemStack(material);
+        ItemMeta im = shopItem.getItemMeta();
+        im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6&l" + enchant));
+        lore.clear();
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&7COST: "
+                + PriceHandler.formatNumber((double) prices.get(enchant))));
+        lore.add(ChatColor.translateAlternateColorCodes('&', "&7MAX: "
+                + PriceHandler.formatNumber((double) maxes.get(enchant))));
+        im.setLore(lore);
+        shopItem.setItemMeta(im);
+        gui.addItem(shopItem);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -210,17 +161,23 @@ public class TokenShopCommand implements Listener, CommandExecutor {
                             case "Efficiency":
                                 ench = Enchantment.DIG_SPEED;
                                 break;
-                            case "NoDrop":
-                                ench = EnchantHandler.NoDrop;
-                                break;
                             case "Silk Touch":
                                 ench = Enchantment.SILK_TOUCH;
                                 break;
-                            case "Twin:":
-                            	ench = EnchantHandler.Twin;
+                            case "MoneyBags":
+                            	ench = EnchantHandler.MoneyBags;
                             	break;
+                            case "Casino":
+                                ench = EnchantHandler.Casino;
+                                break;
                             case "Cutter":
                                 ench = EnchantHandler.Cutter;
+                                break;
+                            case "Quake":
+                                ench = EnchantHandler.Quake;
+                                break;
+                            case "Spheric":
+                                ench = EnchantHandler.Spheric;
                                 break;
                                 default:
                                     return;

@@ -1,6 +1,7 @@
 package me.madcuzdev.titancore.listeners;
 
 import me.madcuzdev.titancore.ConfigHandler;
+import me.madcuzdev.titancore.EnchantHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -12,13 +13,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.UUID;
+import java.util.*;
 
 public class TokenListener implements Listener {
 
+    private Random random = new Random();
     private HashMap<Player, Double> tokenGain = new HashMap<>();
     private Timer timer = new Timer();
 
@@ -41,15 +40,14 @@ public class TokenListener implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
-        double tokens = (prestigeConfig.getDouble(uuid.toString()) / 5) + 1;
+        double tokens = (prestigeConfig.getDouble(uuid.toString()) / 10) + 1;
         if (!tokenGain.containsKey(player)) {
             tokenGain.put(player, tokens);
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-
                     String uuid = player.getUniqueId().toString();
-                    tokenConfig.set(uuid, tokenConfig.getDouble(uuid) + tokenGain.get(player));
+                    tokenConfig.set(uuid, tokenConfig.getDouble(uuid) + tokenGain.get(player) * ((player.getItemInHand() != null && random.nextInt(500) < player.getItemInHand().getEnchantmentLevel(EnchantHandler.Casino)) ? 2 : 1));
                     tokenGain.remove(player);
                     ConfigHandler.reloadtokenConfig();
                     if (player.getItemInHand().getType() == Material.DIAMOND_PICKAXE)

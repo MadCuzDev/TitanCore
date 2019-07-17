@@ -27,14 +27,18 @@ public class CutterListener implements Listener {
                 for (double x = block.getLocation().getX() - (double) enchantLevel; x <= block.getLocation().getX() + (double) enchantLevel; x++) {
                     for (double z = block.getLocation().getZ() - (double) enchantLevel; z <= block.getLocation().getZ() + (double) enchantLevel; z++) {
                         Location lc = new Location(world, x, loc.getY(), z);
-                        if (FortuneListener.getWorldGuard() == null || FortuneListener.getWorldGuard().canBuild(player, lc)) {
-                            FortuneListener.validBlocks.add(lc.getBlock());
-                            Bukkit.getPluginManager().callEvent(new BlockBreakEvent(lc.getBlock(), player));
-                        }
+                        breakBlock(player, lc);
                     }
                 }
                 FortuneListener.validBlocks.clear();
             }
+        }
+    }
+
+    static void breakBlock(Player player, Location lc) {
+        if (FortuneListener.getWorldGuard() == null || FortuneListener.getWorldGuard().canBuild(player, lc)) {
+            FortuneListener.validBlocks.add(lc.getBlock());
+            Bukkit.getPluginManager().callEvent(new BlockBreakEvent(lc.getBlock(), player));
         }
     }
 }

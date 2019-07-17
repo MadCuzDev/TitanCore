@@ -37,22 +37,34 @@ class ScoreboardHandler {
 					showScoreboard(player);
 				}
 			}
-		}.runTaskTimer(core, 400, 40);
+		}.runTaskTimer(core, 200, 40);
 	}
 
-	private void showScoreboard(Player player) {
-		Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-		Objective objective = scoreboard.registerNewObjective("title", "dummy");
-		objective.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "TitanPrison");
-		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+	private String getEntryFromScore(Objective objective, int score) {
+		if(objective == null) return null;
+		if(!hasScoreTaken(objective, score)) return null;
+		for (String s : objective.getScoreboard().getEntries()) {
+			if(objective.getScore(s).getScore() == score) return objective.getScore(s).getEntry();
+		}
+		return null;
+	}
 
-		String playerRank = Objects.requireNonNull(userManager.getUser(player.getName())).getPrimaryGroup();
+	private boolean hasScoreTaken(Objective objective, int score) {
+		for (String s : objective.getScoreboard().getEntries()) {
+			if(objective.getScore(s).getScore() == score) return true;
+		}
+		return false;
+	}
 
-		Score rank = objective.getScore(ChatColor.GOLD + "Rank: " + ChatColor.GRAY + (playerRank.equalsIgnoreCase("default") ? "A" : playerRank.toUpperCase()));
-		rank.setScore(7);
-		Score prestige = objective.getScore(ChatColor.GOLD + "Prestige: " + ChatColor.GRAY + ConfigHandler.getPrestigesConfig().getInt(player.getUniqueId().toString()));
-		prestige.setScore(6);
+	private void replaceScore(Objective objective, int score, String name) {
+		if(hasScoreTaken(objective, score)) {
+			if(getEntryFromScore(objective, score).equalsIgnoreCase(name)) return;
+			if(!(getEntryFromScore(objective, score).equalsIgnoreCase(name))) objective.getScoreboard().resetScores(getEntryFromScore(objective, score));
+		}
+		objective.getScore(name).setScore(score);
+	}
 
+	private double getRankPercent(String playerRank, Player player) {
 		long price;
 		if (playerRank.equalsIgnoreCase("z")) {
 			int nextPrestige = 1;
@@ -65,25 +77,25 @@ class ScoreboardHandler {
 			price = priceHandler.getRankPrices().get(nextRank);
 		}
 		double fraction = VaultHandler.getEcon().getBalance(player) / ((double) price);
-		fraction = Math.min(Math.floor(fraction * 1000) / 10, 100);
+		return Math.min(Math.floor(fraction * 1000) / 10, 100);
+	}
 
-		Score progress = objective.getScore(ChatColor.GOLD + "Progress: " + ChatColor.GRAY + fraction + "%");
-		progress.setScore(5);
+	private void showScoreboard(Player player) {
+		Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
+		Objective objective = scoreboard.registerNewObjective("title", "dummy");
+		objective.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "TitanPrison");
+		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
-		Score blank1 = objective.getScore(" ");
-		blank1.setScore(4);
+		String playerRank = Objects.requireNonNull(userManager.getUser(player.getName())).getPrimaryGroup();
 
-		Score balance = objective.getScore(ChatColor.GOLD + "Balance: " + ChatColor.GRAY + shorten(VaultHandler.getEcon().getBalance(player)));
-		balance.setScore(3);
-
-		Score tokens = objective.getScore(ChatColor.GOLD + "Tokens: " + ChatColor.GRAY + Math.floor(ConfigHandler.getTokenConfig().getDouble(player.getUniqueId().toString()) * 10) / 10);
-		tokens.setScore(2);
-
-		Score blank2 = objective.getScore("  ");
-		blank2.setScore(1);
-
-		Score date = objective.getScore(ChatColor.GRAY + (new SimpleDateFormat("MM/dd/yy")).format(new Date()));
-		date.setScore(0);
+		replaceScore(objective, 7, ChatColor.GOLD + "Rank: " + ChatColor.GRAY + (playerRank.equalsIgnoreCase("default") ? "A" : playerRank.toUpperCase()));
+		replaceScore(objective, 6, ChatColor.GOLD + "Prestige: " + ChatColor.GRAY + ConfigHandler.getPrestigesConfig().getInt(player.getUniqueId().toString()));
+		replaceScore(objective, 5, ChatColor.GOLD + "Progress: " + ChatColor.GRAY + getRankPercent(playerRank, player) + "%");
+		replaceScore(objective, 4, " ");
+		replaceScore(objective, 3, ChatColor.GOLD + "Balance: " + ChatColor.GRAY + shorten(VaultHandler.getEcon().getBalance(player)));
+		replaceScore(objective, 2, ChatColor.GOLD + "Tokens: " + ChatColor.GRAY + Math.floor(ConfigHandler.getTokenConfig().getDouble(player.getUniqueId().toString()) * 10) / 10);
+		replaceScore(objective, 1, " ");
+		replaceScore(objective, 0, ChatColor.GRAY + (new SimpleDateFormat("MM/dd/yy")).format(new Date()));
 
 		player.setScoreboard(scoreboard);
 	}

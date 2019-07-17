@@ -4,9 +4,9 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.ItemStack;
 
-public class Twin extends Enchantment {
+public class MoneyBags extends Enchantment {
 
-	public Twin(int id) {
+	public MoneyBags(int id) {
 		super(id);
 		// TODO Auto-generated constructor stub
 	}
@@ -34,7 +34,7 @@ public class Twin extends Enchantment {
 	 
 	@Override
 	public String getName() {
-	return "Yes";
+	return "MoneyBags";
 	}
 	 
 	@Override
