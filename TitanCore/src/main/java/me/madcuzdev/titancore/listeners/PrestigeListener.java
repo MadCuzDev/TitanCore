@@ -22,11 +22,12 @@ public class PrestigeListener implements Listener {
     public void addPrestigeToChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         event.setFormat(event.getFormat().replace("{PRESTIGE}", getFullDisplay(player)+"&r").replace('&', '\u00A7'));
+
     }
     
-    public static String getCustomizationOption(String option, Player player){
+    private static String getCustomizationOption(String option, Player player) {
     	ConfigurationSection section = ConfigHandler.getCustomizationConfig().getConfigurationSection("" + player.getUniqueId());
-    	if(section == null){
+    	if (section == null) {
     		section = ConfigHandler.getCustomizationConfig().createSection("" + player.getUniqueId());
     		section.set("Design", DEFAULT_DESIGN);
     		section.set("Border", DEFAULT_BORDER);
@@ -38,14 +39,15 @@ public class PrestigeListener implements Listener {
     	return section.getString(option);
     }
     
-    public static String getFullDisplay(Player player){
+    private static String getFullDisplay(Player player){
     	return getPartialDisplay(player, " ", " ");
     }
     
     public static String getPartialDisplay(Player player, String option, String replacement){
+    	String mastery = ConfigHandler.getMasteryConfig().contains(player.getUniqueId().toString()) ? String.valueOf(ConfigHandler.getMasteryConfig().getInt(player.getUniqueId().toString())) : "0";
     	String display = option.equals("Border")?replacement:getCustomizationOption("Border", player);
     	display=display.replace("%design%", option.equals("Design")?replacement:getCustomizationOption("Design", player));
-    	display=display.replace("%prestige%", ConfigHandler.getPrestigesConfig().getInt(player.getUniqueId().toString())+"");
+    	display=display.replace("%prestige%", ConfigHandler.getPrestigesConfig().getInt(player.getUniqueId().toString()) + "-" + mastery);
     	display=display.replace("%pri%", "&"+(option.equals("Primary")?replacement:getCustomizationOption("Primary", player)));
     	display=display.replace("%sec%", "&"+(option.equals("Secondary")?replacement:getCustomizationOption("Secondary", player)));
     	display=display.replace("%ter%", "&"+(option.equals("Tertiary")?replacement:getCustomizationOption("Tertiary", player)));

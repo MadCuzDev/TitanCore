@@ -13,10 +13,8 @@ public class NoHungerListener implements Listener {
     public void onHungerLoss(FoodLevelChangeEvent event) {
         if (noHungerCommand.getNoHungerStatus() && event.getEntity() instanceof Player) {
             event.setCancelled(true);
-            Player player = (Player)event.getEntity();
-            if (player.getFoodLevel() < 19.5D) {
-                player.setFoodLevel(20);
-            }
+            Player player = (Player) event.getEntity();
+            player.setFoodLevel(20);
         }
     }
 }

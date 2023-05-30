@@ -10,7 +10,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class CubicListener implements Listener {
@@ -21,7 +20,7 @@ public class CubicListener implements Listener {
         World world = event.getPlayer().getWorld();
         Location loc = event.getBlock().getLocation();
         Block block = world.getBlockAt(loc);
-        if (!FortuneListener.validBlocks.contains(block)) {
+        if (!MiningListener.validBlocks.contains(block)) {
             Player player = event.getPlayer();
             if (player.getItemInHand().containsEnchantment(EnchantHandler.Cubic)) {
                 int enchantLevel = player.getInventory().getItemInHand().getEnchantmentLevel(EnchantHandler.Cubic);
@@ -32,14 +31,14 @@ public class CubicListener implements Listener {
                         for (double y = block.getLocation().getY() - radius; y <= block.getLocation().getY() + radius; y++) {
                             for (double z = block.getLocation().getZ() - radius; z <= block.getLocation().getZ() + radius; z++) {
                                 Location lc = new Location(world, x, y, z);
-                                if (FortuneListener.getWorldGuard() == null || FortuneListener.getWorldGuard().canBuild(player, lc)) {
-                                    FortuneListener.validBlocks.add(lc.getBlock());
+                                if (MiningListener.getWorldGuard() == null || MiningListener.getWorldGuard().canBuild(player, lc)) {
+                                    MiningListener.validBlocks.add(lc.getBlock());
                                     Bukkit.getPluginManager().callEvent(new BlockBreakEvent(lc.getBlock(), player));
                                 }
                             }
                         }
                     }
-                    FortuneListener.validBlocks.clear();
+                    MiningListener.validBlocks.clear();
                 }
             }
         }

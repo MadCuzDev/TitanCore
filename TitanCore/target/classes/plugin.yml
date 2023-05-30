@@ -33,6 +33,7 @@ commands:
   cost:
     usage: /cost (prestige)
     description: Calculate cost of prestige
+    aliases: [pcost, prescost, prestigecost]
   pwarp:
     usage: /pwarp {warp}
     description: Open GUI or directly warp to Pwarp
@@ -40,10 +41,35 @@ commands:
     usage: /prestigeset (player) (prestige)
     description: Set a user's prestige
     aliases: [setprestige, pset, setp]
-  daily:
-    usage: /daily (reward)
-    description: Receive your daily reward!
   customize:
     usage: /customize
     description: Customize the prestige design
     aliases: [cz]
+  pick:
+    usage: /pick
+    description: Get server-defined pickaxe
+    aliases: [pickaxe]
+  ranks:
+    usage: /ranks
+    description: Lists rank costs
+    aliases: [rankcost]
+  blocks:
+    usage: /blocks
+    description: Get free blocks
+  minevoucher:
+    usage: /minevoucher (player) (blocks)
+    description: Give a player a redeemable minevoucher
+  prestigetop:
+    usage: /prestigetop
+    description: Lists top prestiged players
+    aliases: [ptop, prestop]
+  mastery:
+    usage: /mastery
+    description: Adds to mastery if capable
+  masteryset:
+    usage: /masteryset (player) (mastery)
+    description: Sets mastery
+    aliases: [mset]
+  multiplier:
+    usage: /multiplier
+    aliases: [multi]

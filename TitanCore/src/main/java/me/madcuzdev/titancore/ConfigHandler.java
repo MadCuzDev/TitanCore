@@ -73,7 +73,7 @@ public class ConfigHandler {
         }
     }
 
-    public static void reloadtokenConfig() {
+    public static void reloadTokenConfig() {
         saveTokenConfig();
         loadTokenConfig();
     }
@@ -97,19 +97,6 @@ public class ConfigHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private static void loadCooldownConfig() {
-        try {
-            cooldownConfig.load(cooldownFile);
-        } catch (InvalidConfigurationException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void reloadCooldownConfig() {
-        saveCooldownConfig();
-        loadCooldownConfig();
     }
     
     private static File customizationFile = new File("plugins/TitanCore/customization.yml");
@@ -144,6 +131,40 @@ public class ConfigHandler {
     public static void reloadCustomizationConfig() {
         saveCustomizationConfig();
         loadCustomizationConfig();
+    }
+
+    private static File masteryFile = new File("plugins/TitanCore/mastery.yml");
+    private static FileConfiguration masteryConfig;
+
+    public static FileConfiguration getMasteryConfig() {
+        return masteryConfig;
+    }
+
+    static void setupMasteryConfig() {
+        masteryConfig = YamlConfiguration.loadConfiguration(masteryFile);
+        getMasteryConfig().options().copyDefaults(true);
+        saveMasteryConfig();
+    }
+
+    private static void saveMasteryConfig() {
+        try {
+            masteryConfig.save(masteryFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void loadMasteryConfig() {
+        try {
+            masteryConfig.load(masteryFile);
+        } catch (InvalidConfigurationException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void reloadMasteryConfig() {
+        saveMasteryConfig();
+        loadMasteryConfig();
     }
 
 }

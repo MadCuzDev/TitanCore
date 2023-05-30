@@ -10,8 +10,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.text.DecimalFormat;
-
 
 public class TokenCommand implements CommandExecutor {
 
@@ -39,7 +37,7 @@ public class TokenCommand implements CommandExecutor {
                                 double tokens = Double.parseDouble(args[2]);
                                 String uuid = offlinePlayer.getUniqueId().toString();
                                 ConfigHandler.getTokenConfig().set(uuid, ConfigHandler.getTokenConfig().getDouble(uuid) + tokens);
-                                ConfigHandler.reloadtokenConfig();
+                                ConfigHandler.reloadTokenConfig();
 
                                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l" + offlinePlayer.getName() + " has been given " + PriceHandler.formatNumber(tokens) + " tokens"));
                             } else {
@@ -59,7 +57,7 @@ public class TokenCommand implements CommandExecutor {
                             if (offlinePlayer != null) {
                                 double tokens = Double.parseDouble(args[2]);
                                 ConfigHandler.getTokenConfig().set(offlinePlayer.getUniqueId().toString(), tokens);
-                                ConfigHandler.reloadtokenConfig();
+                                ConfigHandler.reloadTokenConfig();
 
                                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l" + offlinePlayer.getName() + "'s token balance has been set to " + PriceHandler.formatNumber(tokens)));
                             } else {
@@ -80,15 +78,19 @@ public class TokenCommand implements CommandExecutor {
                                 if (sender instanceof Player) {
                                     Player player = (Player) sender;
                                     double tokens = Double.parseDouble(args[2]);
-                                    if (ConfigHandler.getTokenConfig().getDouble(player.getUniqueId().toString()) >= tokens) {
-                                        ConfigHandler.getTokenConfig().set(target.getUniqueId().toString(), tokens + ConfigHandler.getTokenConfig().getDouble(target.getUniqueId().toString()));
-                                        ConfigHandler.getTokenConfig().set(player.getUniqueId().toString(), ConfigHandler.getTokenConfig().getDouble(player.getUniqueId().toString()) - tokens);
-                                        ConfigHandler.reloadtokenConfig();
+                                    if (tokens > 0) {
+                                        if (ConfigHandler.getTokenConfig().getDouble(player.getUniqueId().toString()) >= tokens) {
+                                            ConfigHandler.getTokenConfig().set(target.getUniqueId().toString(), tokens + ConfigHandler.getTokenConfig().getDouble(target.getUniqueId().toString()));
+                                            ConfigHandler.getTokenConfig().set(player.getUniqueId().toString(), ConfigHandler.getTokenConfig().getDouble(player.getUniqueId().toString()) - tokens);
+                                            ConfigHandler.reloadTokenConfig();
 
-                                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lYou paid " + target.getName() + " " + PriceHandler.formatNumber(tokens) + " tokens"));
-                                        target.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lYou received " + PriceHandler.formatNumber(tokens) + " tokens from " + player.getName()));
+                                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lYou paid " + target.getName() + " " + PriceHandler.formatNumber(tokens) + " tokens"));
+                                            target.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lYou received " + PriceHandler.formatNumber(tokens) + " tokens from " + player.getName()));
+                                        } else {
+                                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lError: You do not have enough tokens"));
+                                        }
                                     } else {
-                                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lError: You do not have enough tokens"));
+                                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lError: You must send at least 1 token"));
                                     }
                                 } else {
                                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lError: You must be a player to run this command"));

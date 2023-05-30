@@ -93,7 +93,7 @@ class ScoreboardHandler {
 		replaceScore(objective, 5, ChatColor.GOLD + "Progress: " + ChatColor.GRAY + getRankPercent(playerRank, player) + "%");
 		replaceScore(objective, 4, " ");
 		replaceScore(objective, 3, ChatColor.GOLD + "Balance: " + ChatColor.GRAY + shorten(VaultHandler.getEcon().getBalance(player)));
-		replaceScore(objective, 2, ChatColor.GOLD + "Tokens: " + ChatColor.GRAY + Math.floor(ConfigHandler.getTokenConfig().getDouble(player.getUniqueId().toString()) * 10) / 10);
+		replaceScore(objective, 2, ChatColor.GOLD + "Tokens: " + ChatColor.GRAY + PriceHandler.formatNumber(ConfigHandler.getTokenConfig().getDouble(player.getUniqueId().toString())));
 		replaceScore(objective, 1, " ");
 		replaceScore(objective, 0, ChatColor.GRAY + (new SimpleDateFormat("MM/dd/yy")).format(new Date()));
 

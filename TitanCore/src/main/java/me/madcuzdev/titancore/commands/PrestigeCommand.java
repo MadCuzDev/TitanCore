@@ -52,6 +52,8 @@ public class PrestigeCommand implements CommandExecutor {
 
                 VaultHandler.getEcon().withdrawPlayer(player, prestigePrice);
 
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "crate give to " + player.getName() + " prestige 1");
+
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lSuccess! You've prestiged to " +
                         ConfigHandler.getPrestigesConfig().getInt(player.getUniqueId().toString()) + " for $" + PriceHandler.formatNumber((double) prestigePrice)));
             } else {

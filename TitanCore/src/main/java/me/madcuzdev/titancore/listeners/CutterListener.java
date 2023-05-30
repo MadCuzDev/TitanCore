@@ -10,9 +10,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-import java.util.Random;
-import java.util.Timer;
-
 public class CutterListener implements Listener {
 
     @EventHandler
@@ -20,7 +17,7 @@ public class CutterListener implements Listener {
         World world = event.getPlayer().getWorld();
         Location loc = event.getBlock().getLocation();
         Block block = world.getBlockAt(loc);
-        if (!FortuneListener.validBlocks.contains(block)) {
+        if (!MiningListener.validBlocks.contains(block)) {
             Player player = event.getPlayer();
             if (player.getItemInHand().containsEnchantment(EnchantHandler.Cutter)) {
                 int enchantLevel = player.getInventory().getItemInHand().getEnchantmentLevel(EnchantHandler.Cutter);
@@ -30,14 +27,14 @@ public class CutterListener implements Listener {
                         breakBlock(player, lc);
                     }
                 }
-                FortuneListener.validBlocks.clear();
+                MiningListener.validBlocks.clear();
             }
         }
     }
 
     static void breakBlock(Player player, Location lc) {
-        if (FortuneListener.getWorldGuard() == null || FortuneListener.getWorldGuard().canBuild(player, lc)) {
-            FortuneListener.validBlocks.add(lc.getBlock());
+        if (MiningListener.getWorldGuard() == null || MiningListener.getWorldGuard().canBuild(player, lc)) {
+            MiningListener.validBlocks.add(lc.getBlock());
             Bukkit.getPluginManager().callEvent(new BlockBreakEvent(lc.getBlock(), player));
         }
     }

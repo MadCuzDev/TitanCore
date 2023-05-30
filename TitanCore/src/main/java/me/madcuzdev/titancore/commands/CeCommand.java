@@ -82,6 +82,7 @@ public class CeCommand implements CommandExecutor {
                         case "remove":
                             break;
                         case "help":
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lValid commands:\n/ce list\n/ce add (enchant) (level)\n/ce remove (enchant) {WIP}"));
                         default:
                             break;
                     }

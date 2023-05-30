@@ -10,11 +10,11 @@ import me.madcuzdev.titancore.enchants.*;
 public class EnchantHandler {
 
     static void setupEnchants() {
-        registerEnchants(Cubic, Cutter, MoneyBags, Casino, Quake, Spheric);
+        registerEnchants(Cubic, Cutter, MoneyBags, Casino, Quake, Spheric, Scavenger, Explosive, Jackhammer);
     }
 
     private static void registerEnchants(Enchantment... enchantments) {
-        for (Enchantment ench : enchantments) {
+        for (Enchantment enchant : enchantments) {
             try {
                 try {
                     Field f = Enchantment.class.getDeclaredField("acceptingNew");
@@ -24,10 +24,10 @@ public class EnchantHandler {
                     e.printStackTrace();
                 }
                 try {
-                    Enchantment.registerEnchantment(ench);
+                    Enchantment.registerEnchantment(enchant);
                 } catch (IllegalArgumentException ignored){
                 }
-            }catch(Exception e){
+            } catch(Exception e) {
                 e.printStackTrace();
             }
         }
@@ -39,6 +39,9 @@ public class EnchantHandler {
     public static Casino Casino = new Casino(71);
     public static Quake Quake = new Quake(72);
     public static Spheric Spheric = new Spheric(73);
+    public static Scavenger Scavenger = new Scavenger(74);
+    public static Explosive Explosive = new Explosive(75);
+    public static Jackhammer Jackhammer = new Jackhammer(76);
 
     public ArrayList<Enchantment> getEnchants() {
         return enchantments;
@@ -53,5 +56,8 @@ public class EnchantHandler {
         enchantments.add(Casino);
         enchantments.add(Quake);
         enchantments.add(Spheric);
+        enchantments.add(Scavenger);
+        enchantments.add(Explosive);
+        enchantments.add(Jackhammer);
     }
 }

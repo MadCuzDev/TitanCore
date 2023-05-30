@@ -8,7 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class TitanCore extends JavaPlugin {
     private VaultHandler vaultHandler = new VaultHandler();
-    private ScoreboardHandler scoreboardHandler;
+
     @Override
     public void onEnable() {
         if (!vaultHandler.setupEconomy() ) {
@@ -22,6 +22,7 @@ public final class TitanCore extends JavaPlugin {
         ConfigHandler.setupTokenConfig();
         ConfigHandler.setupCooldownConfig();
         ConfigHandler.setupCustomizationConfig();
+        ConfigHandler.setupMasteryConfig();
         getLogger().info("Configs loaded");
 
         EnchantHandler.setupEnchants();
@@ -31,16 +32,19 @@ public final class TitanCore extends JavaPlugin {
         TokenShopCommand tokenShopCommand = new TokenShopCommand();
         PwarpCommand pwarpCommand = new PwarpCommand();
         CustomizeCommand customizeCommand = new CustomizeCommand();
+        BlocksCommand blocksCommand = new BlocksCommand();
+        MineVoucherCommand mineVoucherCommand = new MineVoucherCommand();
 
         // Listener classes
         NoHungerListener noHungerListener = new NoHungerListener();
         PrestigeListener prestigeListener = new PrestigeListener();
+        MiningListener miningListener = new MiningListener();
         CubicListener cubicListener = new CubicListener();
-        FortuneListener fortuneListener = new FortuneListener();
-        TokenListener tokenListener = new TokenListener();
         CutterListener cutterListener = new CutterListener();
         QuakeListener quakeListener = new QuakeListener();
         SphericListener sphericListener = new SphericListener();
+        ExplosiveListener explosiveListener = new ExplosiveListener();
+        JackhammerListener jackhammerListener = new JackhammerListener();
 
         // CommandExecutor classes
         NoHungerCommand noHungerCommand = new NoHungerCommand();
@@ -51,15 +55,23 @@ public final class TitanCore extends JavaPlugin {
         CostCommand costCommand = new CostCommand();
         TokenCommand tokenCommand = new TokenCommand();
         PrestigeSetCommand prestigeSetCommand = new PrestigeSetCommand();
-        DailyCommand dailyCommand = new DailyCommand();
+        PickCommand pickCommand = new PickCommand();
+        RanksCommand ranksCommand = new RanksCommand();
+        PrestigeTopCommand prestigeTopCommand = new PrestigeTopCommand();
+        MasteryCommand masteryCommand = new MasteryCommand();
+        MasterySetCommand masterySetCommand = new MasterySetCommand();
+        MultiplierCommand multiplierCommand = new MultiplierCommand();
 
         //Load presets
         CustomizeCommand.setupCustomizationOptions();
-        scoreboardHandler = new ScoreboardHandler(this);
+        ScoreboardHandler scoreboardHandler = new ScoreboardHandler(this);
         scoreboardHandler.startScoreboardLoop();
+
         
-        
-        registerEvents(noHungerListener, prestigeListener, cubicListener, fortuneListener, tokenListener, tokenShopCommand, cutterListener, pwarpCommand, customizeCommand, quakeListener, sphericListener);
+        registerEvents(noHungerListener, prestigeListener, cubicListener, miningListener,
+                tokenShopCommand, cutterListener, pwarpCommand, customizeCommand,
+                quakeListener, sphericListener, blocksCommand, mineVoucherCommand,
+                explosiveListener, jackhammerListener);
 
         getCommand("rankup").setExecutor(rankupCommand);
         getCommand("nohunger").setExecutor(noHungerCommand);
@@ -71,8 +83,18 @@ public final class TitanCore extends JavaPlugin {
         getCommand("cost").setExecutor(costCommand);
         getCommand("pwarp").setExecutor(pwarpCommand);
         getCommand("prestigeset").setExecutor(prestigeSetCommand);
-        getCommand("daily").setExecutor(dailyCommand);
         getCommand("customize").setExecutor(customizeCommand);
+        getCommand("pick").setExecutor(pickCommand);
+        getCommand("ranks").setExecutor(ranksCommand);
+        getCommand("blocks").setExecutor(blocksCommand);
+        getCommand("minevoucher").setExecutor(mineVoucherCommand);
+        getCommand("prestigetop").setExecutor(prestigeTopCommand);
+        getCommand("mastery").setExecutor(masteryCommand);
+        getCommand("masteryset").setExecutor(masterySetCommand);
+        getCommand("multiplier").setExecutor(multiplierCommand);
+
+        miningListener.scheduleBlocks();
+        getLogger().info("Mining timer successfully started");
 
         getLogger().info("TitanCore has been successfully enabled");
     }
