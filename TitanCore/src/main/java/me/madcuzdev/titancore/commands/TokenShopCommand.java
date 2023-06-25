@@ -46,6 +46,7 @@ public class TokenShopCommand implements Listener, CommandExecutor {
         prices.put("Spheric", 7500);
         prices.put("Scavenger", 10000);
         prices.put("Explosive", 500);
+        prices.put("Jackhammer", 10000);
     }
 
     private HashMap<String, Integer> maxes;
@@ -63,6 +64,7 @@ public class TokenShopCommand implements Listener, CommandExecutor {
         maxes.put("Spheric", 5000);
         maxes.put("Scavenger", 100);
         maxes.put("Explosive", 5000);
+        maxes.put("Jackhammer", 10000);
     }
 
     private Inventory buyGUI = Bukkit.createInventory(null, 36, ChatColor.translateAlternateColorCodes('&', "&6&lEnchantments - Enchant"));
@@ -124,7 +126,9 @@ public class TokenShopCommand implements Listener, CommandExecutor {
 
         addShopItem(Material.COOKIE, "Cutter", false);
 
-        for (int i = 0; 6 > i; i++) {
+        addShopItem(Material.STONE_SLAB2, "Jackhammer", false);
+
+        for (int i = 0; 5 > i; i++) {
             buyGUI.setItem(buyGUI.firstEmpty(), grayGlassPane);
         }
 
@@ -308,6 +312,9 @@ public class TokenShopCommand implements Listener, CommandExecutor {
                     case "Explosive":
                         ench = EnchantHandler.Explosive;
                         break;
+                    case "Jackhammer":
+                        ench = EnchantHandler.Jackhammer;
+                        break;
                     default:
                         return;
                 }
@@ -416,6 +423,9 @@ public class TokenShopCommand implements Listener, CommandExecutor {
                         break;
                     case "Explosive":
                         ench = EnchantHandler.Explosive;
+                        break;
+                    case "Jackhammer":
+                        ench = EnchantHandler.Jackhammer;
                         break;
                     default:
                         return;
