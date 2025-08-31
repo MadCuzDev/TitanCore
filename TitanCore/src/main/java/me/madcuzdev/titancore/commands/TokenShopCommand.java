@@ -46,7 +46,7 @@ public class TokenShopCommand implements Listener, CommandExecutor {
         prices.put("Spheric", 7500);
         prices.put("Scavenger", 10000);
         prices.put("Explosive", 500);
-        prices.put("Jackhammer", 10000);
+        prices.put("Jackhammer", 6000);
     }
 
     private HashMap<String, Integer> maxes;
