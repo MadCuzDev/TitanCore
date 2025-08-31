@@ -1,0 +1,75 @@
+name: TitanCore
+version: 1.0
+main: me.madcuzdev.titancore.TitanCore
+author: MadCuzDev
+commands:
+  nohunger:
+    usage: /nohunger
+    description: Toggles hunger on/off
+  titancore:
+    usage: /titancore (command)
+    description: Administrative command
+    aliases: [tc]
+  rankup:
+    usage: /rankup
+    description: Rank up to the next prison rank!
+  maxrankup:
+    usage: /maxrankup
+    description: Rank up to the highest possible prison rank!
+  prestige:
+    usage: /prestige
+    description: Prestige to the next prestige rank!
+  ce:
+    usage: /ce (command) {arg1} {arg2}
+    description: General Custom-Enchant command
+  token:
+    usage: /token
+    description: Returns your token balance
+    aliases: [te]
+  tokenshop:
+    usage: /tokenshop
+    description: Accesses enchantment shop
+    aliases: [teshop, ts, tshop, etshop]
+  cost:
+    usage: /cost (prestige)
+    description: Calculate cost of prestige
+    aliases: [pcost, prescost, prestigecost]
+  pwarp:
+    usage: /pwarp {warp}
+    description: Open GUI or directly warp to Pwarp
+  prestigeset:
+    usage: /prestigeset (player) (prestige)
+    description: Set a user's prestige
+    aliases: [setprestige, pset, setp]
+  customize:
+    usage: /customize
+    description: Customize the prestige design
+    aliases: [cz]
+  pick:
+    usage: /pick
+    description: Get server-defined pickaxe
+    aliases: [pickaxe]
+  ranks:
+    usage: /ranks
+    description: Lists rank costs
+    aliases: [rankcost]
+  blocks:
+    usage: /blocks
+    description: Get free blocks
+  minevoucher:
+    usage: /minevoucher (player) (blocks)
+    description: Give a player a redeemable minevoucher
+  prestigetop:
+    usage: /prestigetop
+    description: Lists top prestiged players
+    aliases: [ptop, prestop]
+  mastery:
+    usage: /mastery
+    description: Adds to mastery if capable
+  masteryset:
+    usage: /masteryset (player) (mastery)
+    description: Sets mastery
+    aliases: [mset]
+  multiplier:
+    usage: /multiplier
+    aliases: [multi]
